@@ -86,7 +86,7 @@ public class WarpReaderView extends UI {
         WarpTextWidget warpTextLabelUpdater = uiModel.getWarpTextLabelUpdater();
 
         DurationWidget durationWidget = uiModel.getDurationLabel();
-        WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(playModel, this);
+        WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(this);
 
         WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory,

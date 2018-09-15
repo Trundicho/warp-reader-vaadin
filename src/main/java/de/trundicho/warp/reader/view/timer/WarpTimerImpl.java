@@ -1,22 +1,22 @@
 package de.trundicho.warp.reader.view.timer;
 
 import com.vaadin.ui.Timer;
-import de.trundicho.warp.reader.core.model.playmode.impl.PlayModel;
+import de.trundicho.warp.reader.core.controller.WarpUpdater;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
 import de.trundicho.warp.reader.view.WarpReaderView;
 
 class WarpTimerImpl implements WarpTimer {
     private final Timer timer;
 
-    WarpTimerImpl(PlayModel playModel, WarpReaderView ui) {
+    WarpTimerImpl(WarpUpdater warpUpdater, WarpReaderView ui) {
         timer = new Timer();
-        timer.run(() -> doNextWarp(playModel));
+        timer.run(() -> doNextWarp(warpUpdater));
         ui.addExtension(timer);
     }
 
     @Override
-    public void doNextWarp(PlayModel playModel) {
-        playModel.nextIncrement();
+    public void doNextWarp(WarpUpdater warpUpdater) {
+        warpUpdater.doNextWarp();
     }
 
     @Override
