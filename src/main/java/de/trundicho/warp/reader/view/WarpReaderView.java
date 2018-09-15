@@ -7,7 +7,7 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Timer;
 import com.vaadin.ui.UI;
 import de.trundicho.warp.reader.core.controller.DefaultTextFactory;
-import de.trundicho.warp.reader.core.controller.WarpTextAreaInitializer;
+import de.trundicho.warp.reader.core.controller.WarpInitializer;
 import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionUpdaterListener;
@@ -88,12 +88,12 @@ public class WarpReaderView extends UI {
         DurationWidget durationWidget = uiModel.getDurationLabel();
         WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(playModel, this);
 
-        WarpTextAreaInitializer warpTextAreaInitializer = new WarpTextAreaInitializer(warpTextLabelUpdater, speedModel,
+        WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory,
                 i18nLocalizer);
 
-        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpTextAreaInitializer);
-        TextAreaParser textAreaParser = new TextAreaParser(warpTextAreaInitializer, websiteParserAndWarper);
+        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer);
+        TextAreaParser textAreaParser = new TextAreaParser(warpInitializer, websiteParserAndWarper);
         buildAndStartTextAreaParserTimer(inputTextWidget, textAreaParser, this);
     }
 
