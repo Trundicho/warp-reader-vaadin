@@ -12,12 +12,12 @@ class WarpTimerImpl implements WarpTimer {
     WarpTimerImpl(PlayModel playModel, WarpReaderView ui) {
         this.playModel = playModel;
         timer = new Timer();
-        timer.run(() -> doNextWarp());
+        timer.run(() -> doNextWarp(playModel));
         ui.addExtension(timer);
     }
 
     @Override
-    public void doNextWarp() {
+    public void doNextWarp(PlayModel playModel) {
         playModel.nextIncrement();
     }
 
