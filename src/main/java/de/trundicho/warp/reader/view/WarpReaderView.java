@@ -50,6 +50,7 @@ public class WarpReaderView extends UI {
 
     @Override
     protected void init(VaadinRequest request) {
+        i18nLocalizer = new I18nLocalizer(Locale.ENGLISH);
         PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PLAYING);
         WordLengthModelMutable wordLengthModel = new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY);
         TextSplitter textSplitter = new TextSplitter(wordLengthModel);
@@ -64,7 +65,6 @@ public class WarpReaderView extends UI {
         initUiAndRegisterListeners(uiModel, wpmSpeedExchanger, speedModel, playModeModel, speedWeightModel,
                 textSplitter, playModel);
         new CssStyler().applyCssStyles();
-        i18nLocalizer = new I18nLocalizer(Locale.ENGLISH);
     }
 
     private void initUiAndRegisterListeners(WarpReaderViewModel uiModel, WpmSpeedExchanger wpmSpeedExchanger,
