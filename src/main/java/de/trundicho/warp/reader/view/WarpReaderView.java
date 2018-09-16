@@ -92,7 +92,7 @@ public class WarpReaderView extends UI {
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory,
                 i18nLocalizer);
 
-        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer);
+        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer, i18nLocalizer);
         TextAreaParser textAreaParser = new TextAreaParser(warpInitializer, websiteParserAndWarper);
         buildAndStartTextAreaParserTimer(inputTextWidget, textAreaParser, this);
     }
@@ -119,6 +119,7 @@ public class WarpReaderView extends UI {
         DefaultTextFactory defaultTextFactory = new DefaultTextFactory(i18nLocalizer);
         String textToRead = defaultTextFactory.createText();
         inputTextWidget.setText(textToRead);
+        inputTextWidget.setHelpText(i18nLocalizer.localize("warpreader.help.text"));
     }
 
     private void initAndRegisterWpmBox(WarpReaderViewModel uiModel, WpmSpeedExchanger wpmSpeedExchanger,
