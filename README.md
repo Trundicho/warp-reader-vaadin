@@ -35,10 +35,10 @@ What things you need to install the software and how to install them
 5. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
 6. Open browser at localhost:8080 and use WarpReader
 
-## Deployment
+### Deployment
 
 The default profile in the pom.xml builds a tomcat ready war.
-There is also a jetty profile.
+There is also a jetty profile that builds a jetty ready war.
 
 ## Built With
 
