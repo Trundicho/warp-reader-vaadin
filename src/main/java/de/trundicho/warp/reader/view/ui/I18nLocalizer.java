@@ -1,4 +1,4 @@
-package de.trundicho.warp.reader.view;
+package de.trundicho.warp.reader.view.ui;
 
 import java.util.Locale;
 import java.util.ResourceBundle;

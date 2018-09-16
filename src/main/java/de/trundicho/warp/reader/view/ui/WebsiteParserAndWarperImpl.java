@@ -1,7 +1,6 @@
 package de.trundicho.warp.reader.view.ui;
 
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
-import de.trundicho.warp.reader.view.I18nLocalizer;
 import de.trundicho.warp.reader.core.view.api.WebsiteParserAndWarper;
 import de.trundicho.warp.reader.core.view.api.widgets.InputTextWidget;
 import de.trundicho.warp.reader.view.parser.TextFromWebUrlParserService;

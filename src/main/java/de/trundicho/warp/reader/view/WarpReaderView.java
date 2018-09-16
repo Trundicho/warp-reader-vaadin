@@ -32,6 +32,7 @@ import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
 import de.trundicho.warp.reader.core.view.api.widgets.*;
 import de.trundicho.warp.reader.view.timer.WarpTimerFactoryImpl;
 import de.trundicho.warp.reader.view.ui.CssStyler;
+import de.trundicho.warp.reader.view.ui.I18nLocalizer;
 import de.trundicho.warp.reader.view.ui.WarpReaderViewBuilderImpl;
 import de.trundicho.warp.reader.view.ui.WebsiteParserAndWarperImpl;
 
