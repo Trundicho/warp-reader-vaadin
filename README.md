@@ -9,7 +9,7 @@ Warp Rader is a project to support fast reading. This repository is a implementa
 See Warp Reader in action here:
 http://warpreader.trundicho.de
 
-### Drag and drop Url's or copy and paste the text to read in the text area.
+Drag and drop Url's or copy and paste the text to read in the text area.
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DlbKjgIBs-k/0.jpg)](http://www.youtube.com/watch?v=DlbKjgIBs-k)
 
 ## Developer documentation
