@@ -26,15 +26,13 @@ import de.trundicho.warp.reader.core.model.warpword.WordLengthModelMutable;
 import de.trundicho.warp.reader.core.model.warpword.impl.WordLengthModelImpl;
 import de.trundicho.warp.reader.core.view.api.WarpReaderViewBuilder;
 import de.trundicho.warp.reader.core.view.api.WarpReaderViewModel;
-import de.trundicho.warp.reader.core.view.api.WebsiteParserAndWarper;
-import de.trundicho.warp.reader.core.view.api.parser.TextAreaParser;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
 import de.trundicho.warp.reader.core.view.api.widgets.*;
+import de.trundicho.warp.reader.view.parser.TextAreaParserTimerBuilder;
 import de.trundicho.warp.reader.view.timer.WarpTimerFactoryImpl;
 import de.trundicho.warp.reader.view.ui.CssStyler;
 import de.trundicho.warp.reader.view.ui.I18nLocalizer;
 import de.trundicho.warp.reader.view.ui.WarpReaderViewBuilderImpl;
-import de.trundicho.warp.reader.view.ui.WebsiteParserAndWarperImpl;
 
 import java.util.Locale;
 
@@ -67,7 +65,8 @@ public class WarpReaderView extends UI {
     }
 
     private void initUiAndRegisterListeners(WarpReaderViewModel uiModel, WpmSpeedExchanger wpmSpeedExchanger,
-                                            DelayModel speedModel, PlayModeModel playModeModel, SpeedWeightModel speedWeightModel,
+                                            DelayModel speedModel, PlayModeModel playModeModel,
+                                            SpeedWeightModel speedWeightModel,
                                             TextSplitter textSplitter, PlayModel playModel) {
         initAndRegisterWpmBox(uiModel, wpmSpeedExchanger, speedModel);
 
@@ -90,17 +89,10 @@ public class WarpReaderView extends UI {
         WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
 
-        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer, i18nLocalizer);
-        TextAreaParser textAreaParser = new TextAreaParser(warpInitializer, websiteParserAndWarper);
-        buildAndStartTextAreaParserTimer(inputTextWidget, textAreaParser, this);
-    }
-
-    private void buildAndStartTextAreaParserTimer(InputTextWidget inputTextWidget, TextAreaParser textAreaParser, WarpReaderView ui) {
-        Timer textAreaParserTimer = new Timer();
-        textAreaParserTimer.run(() ->
-                textAreaParser.parseInputTextAndStartWarping(inputTextWidget));
+        TextAreaParserTimerBuilder textAreaParserTimerBuilder = new TextAreaParserTimerBuilder(warpInitializer, i18nLocalizer);
+        Timer textAreaParserTimer = textAreaParserTimerBuilder.buildTextAreaParserTimer(inputTextWidget);
         textAreaParserTimer.scheduleRepeatable(TEXT_AREA_PARSER_DELAY);
-        ui.addExtension(textAreaParserTimer);
+        addExtension(textAreaParserTimer);
     }
 
     public void addExtension(Extension extension) {
