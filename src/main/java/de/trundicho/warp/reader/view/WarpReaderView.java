@@ -6,13 +6,11 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Timer;
 import com.vaadin.ui.UI;
-import de.trundicho.warp.reader.core.controller.DefaultTextFactory;
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
 import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionUpdaterListener;
 import de.trundicho.warp.reader.core.controller.speed.WpmBoxSpeedModelUpdater;
-import de.trundicho.warp.reader.core.model.i18n.I18nLocalizer;
 import de.trundicho.warp.reader.core.model.playmode.PlayModeModel;
 import de.trundicho.warp.reader.core.model.playmode.PlayState;
 import de.trundicho.warp.reader.core.model.playmode.impl.PlayModeModelImpl;
@@ -89,8 +87,7 @@ public class WarpReaderView extends UI {
         WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(this);
 
         WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
-                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory,
-                i18nLocalizer);
+                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
 
         WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer, i18nLocalizer);
         TextAreaParser textAreaParser = new TextAreaParser(warpInitializer, websiteParserAndWarper);
@@ -116,8 +113,7 @@ public class WarpReaderView extends UI {
     }
 
     private void initInputTextArea(InputTextWidget inputTextWidget) {
-        DefaultTextFactory defaultTextFactory = new DefaultTextFactory(i18nLocalizer);
-        String textToRead = defaultTextFactory.createText();
+        String textToRead = i18nLocalizer.localize("warpreader.initial.text");
         inputTextWidget.setText(textToRead);
         inputTextWidget.setHelpText(i18nLocalizer.localize("warpreader.help.text"));
     }
