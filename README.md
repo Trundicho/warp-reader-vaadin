@@ -3,8 +3,6 @@
 # warp-reader-ui-vaadin
 Warp Reader Ui Vaadin is a implementation of the Warp-Reader-Core view api.
 
-![Alt Text](https://warpreader.trundicho.de/resources/WarpReader.gif)
-
 See it in action here:
 http://warpreader.trundicho.de
 
