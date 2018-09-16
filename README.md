@@ -30,8 +30,8 @@ What things you need to install the software and how to install them
 
 1. Clone the warp-reader-core repository: https://github.com/Trundicho/warp-reader-core
 2. Clone the https://github.com/Trundicho/warp-reader-ui-vaadin
-3. In warp-reader-core run mvn clean install
-4. In warp-reader-ui-vaadin run mvn clean install
+3. In warp-reader-core run `mvn clean install`
+4. In warp-reader-ui-vaadin `run mvn clean install`
 5. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
 6. Open browser at localhost:8080 and use WarpReader
 
