@@ -40,6 +40,11 @@ What things you need to install the software and how to install them
 The default profile in the pom.xml builds a tomcat ready war.
 There is also a jetty profile.
 
+## Built With
+
+* [Vaadin](https://vaadin.com/docs/v8/framework/tutorial.html) - The vaadin-8 web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+
 ## Authors
 
 * **Angelo Romito** - *Initial work* - [Trundicho](https://github.com/Trundicho)
