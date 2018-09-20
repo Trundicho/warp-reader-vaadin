@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>warp-reader-ui-vaadin2</artifactId>
+    <artifactId>warp-reader-ui-vaadin-8</artifactId>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
