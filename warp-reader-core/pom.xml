@@ -10,7 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>warp-reader-core2</artifactId>
+    <artifactId>warp-reader-core</artifactId>
 
     <build>
         <plugins>
