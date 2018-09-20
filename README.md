@@ -1,6 +1,6 @@
-# Warp Reader UI Vaadin
+# Warp Reader
 
-Warp Rader is a project to support fast reading. This repository is a implementation of the Warp-Reader-Core view api.
+Warp Rader is a project to support fast reading. This repository has the Warp-Reader-Core and a implementation of the Warp-Reader-Core view api.
 
 ![Alt Text](http://www.warpreader.trundicho.de/WarpReader.gif)
 
@@ -28,12 +28,10 @@ What things you need to install the software and how to install them
 
 ### Installing
 
-1. Clone the warp-reader-core repository: https://github.com/Trundicho/warp-reader-core
-2. Clone the https://github.com/Trundicho/warp-reader-ui-vaadin
-3. In warp-reader-core run `mvn clean install`
-4. In warp-reader-ui-vaadin run `mvn clean install`
-5. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
-6. Open browser at localhost:8080 and use WarpReader
+1. Clone this repository
+2. In warp-reader pom.xml run `mvn clean install`
+3. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
+4. Open browser at localhost:8080 and use WarpReader
 
 ### Deployment
 
