@@ -3,10 +3,9 @@ package de.trundicho.warp.reader.client.view.gwt;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
-
-import de.trundicho.warp.reader.client.controller.play.PlayButtonWidgetActionRunner;
-import de.trundicho.warp.reader.client.model.playmode.PlayState;
-import de.trundicho.warp.reader.client.view.api.widgets.PlayButtonWidget;
+import de.trundicho.warp.reader.core.controller.play.PlayButtonWidgetActionRunner;
+import de.trundicho.warp.reader.core.model.playmode.PlayState;
+import de.trundicho.warp.reader.core.view.api.widgets.PlayButtonWidget;
 
 final class PlayButtonWidgetImpl implements PlayButtonWidget {
 
@@ -36,4 +35,5 @@ final class PlayButtonWidgetImpl implements PlayButtonWidget {
 			}
 		});
 	}
+
 }

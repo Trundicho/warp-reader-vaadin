@@ -9,7 +9,6 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-    <name>de.trundicho.warp.reader.client.WarpReaderWeb</name>
     <artifactId>warp-reader-ui-gwt</artifactId>
 
     <properties>
@@ -38,6 +37,11 @@
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>de.trundicho</groupId>
+            <artifactId>warp-reader-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>com.google.gwt</groupId>
             <artifactId>gwt-servlet</artifactId>
@@ -104,10 +108,6 @@
                     <!-- DevMode configuration -->
                     <warDir>${project.build.directory}/${project.build.finalName}</warDir>
                     <classpathScope>compile+runtime</classpathScope>
-                    <!-- URL(s) that should be opened by DevMode (gwt:devmode). -->
-                    <startupUrls>
-                        <startupUrl>WarpReaderGwt.html</startupUrl>
-                    </startupUrls>
                 </configuration>
             </plugin>
 

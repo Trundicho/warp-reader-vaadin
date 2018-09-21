@@ -23,7 +23,22 @@
     </properties>
     <modules>
         <module>warp-reader-core</module>
-        <module>warp-reader-ui-vaadin-8</module>
-        <module>warp-reader-ui-gwt</module>
     </modules>
+    <profiles>
+        <profile>
+            <id>warp-reader-vaadin</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>warp-reader-ui-vaadin-8</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>warp-reader-gwt</id>
+            <modules>
+                <module>warp-reader-ui-gwt</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>

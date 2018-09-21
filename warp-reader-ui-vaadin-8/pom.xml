@@ -21,7 +21,7 @@
     </properties>
     <profiles>
         <profile>
-            <id>tomcat</id>
+            <id>vaadin-tomcat</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -33,7 +33,7 @@
             </activation>
         </profile>
         <profile>
-            <id>jetty</id>
+            <id>vaadin-jetty</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -82,7 +82,7 @@
         </dependency>
         <dependency>
             <groupId>de.trundicho</groupId>
-            <artifactId>warp-reader-core2</artifactId>
+            <artifactId>warp-reader-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>

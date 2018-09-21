@@ -1,22 +1,13 @@
 package de.trundicho.warp.reader.client.view.gwt;
 
 import com.google.gwt.user.client.Element;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IntegerBox;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Panel;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.VerticalPanel;
-
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewBuilder;
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewModel;
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewModelImpl;
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewModelMutable;
-import de.trundicho.warp.reader.client.view.api.widgets.WarpTextWidget;
-import de.trundicho.warp.reader.client.view.api.widgets.WordsPerMinuteWidget;
+import com.google.gwt.user.client.ui.*;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewBuilder;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewModel;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewModelImpl;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewModelMutable;
+import de.trundicho.warp.reader.core.view.api.widgets.WarpTextWidget;
+import de.trundicho.warp.reader.core.view.api.widgets.WordsPerMinuteWidget;
 
 public class WarpReaderViewBuilderImpl implements WarpReaderViewBuilder {
 

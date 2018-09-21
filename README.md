@@ -1,6 +1,7 @@
-# Warp Reader GWT
+# Warp Reader
 
-Warp Rader is a project to support fast reading. This module i a implementation of the Warp-Reader-Core view api.
+Warp Reader is a project to support fast reading. This repository has the Warp-Reader-Core and multiple implementations
+ of the Warp-Reader-Core view api.
 
 ![Alt Text](http://www.warpreader.trundicho.de/WarpReader.gif)
 
@@ -14,7 +15,8 @@ Drag and drop Url's or copy and paste the text to read in the text area.
 
 ## Developer documentation
 The warp-reader-ui-vaadin component is based on vaadin and spring-boot.  
-Because the timer widget is a gwt ported component it is necessary to build the module with vaadin-maven-plugin already configured in the pom.xml.  
+Because the timer widget is a gwt ported component it is necessary to build the module with vaadin-maven-plugin 
+already configured in the pom.xml.  
 The default profile in the pom builds a war that is deployable in tomcat.  
 There is also a jetty profile if you want to use jetty.  
 
@@ -30,8 +32,8 @@ What things you need to install the software and how to install them
 
 1. Clone this repository
 2. In warp-reader pom.xml run `mvn clean install`
-3. Start gwt application class from your IDE maven plugins gwt:devmode
-4. Open browser at http://127.0.0.1:8888/ and use WarpReader
+3. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
+4. Open browser at localhost:8080 and use WarpReader
 
 ### Deployment
 
