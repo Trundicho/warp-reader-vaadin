@@ -4,12 +4,15 @@
 <!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit 2.8.0//EN"
         "http://gwtproject.org/doctype/2.8.0/gwt-module.dtd">
 <module rename-to='warpreadercore'>
+    <!-- Inherit the core Web Toolkit stuff. -->
+    <inherits name='com.google.gwt.user.User' />
+
     <source path='controller'/>
     <source path='model'/>
     <source path='view'/>
     <!-- gwt needs an entry point to build the module - has to be a class -->
     <entry-point
-            class='de.trundicho.warp.reader.core.view.api.WarpReaderViewModelImpl' />
+            class='de.trundicho.warp.reader.core.view.api.WarpReaderCore' />
     <!-- allow Super Dev Mode -->
     <add-linker name="xsiframe"/>
 </module>
