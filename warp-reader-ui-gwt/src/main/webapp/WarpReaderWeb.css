@@ -1,0 +1,63 @@
+/** Add css rules here for your application. */
+/** Example rules used by the template application (remove for your app) */
+.warpRegion {
+	padding: 20px 0px 30px;
+
+}
+
+.leftWarpPanel {
+	width: 205px;
+	position: relative;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: black;
+	text-align: right;
+}
+
+.rightWarpPanel {
+		width: 205px;
+	position: relative;
+	font-size: 2.5em;
+	font-weight: bold;
+	color: black;
+	text-align: left;
+}
+
+body {
+}
+
+input {
+    font-size: 1.1em !important;
+}
+
+textarea {
+    font-size: 1.4em !important;
+}
+
+.middleLetter{
+    color: red;
+}
+
+.centeringTextContent {
+	left: -5px;
+}
+
+#textArea {
+	height: 100px;
+	width: 300px;
+}
+
+#numberSpinner {
+	width: 40px;
+}
+
+#percentageSpinner {
+	width: 40px;
+}
+
+.playButton {
+	display: block;
+	font-size: 16pt;
+	width: 114px;
+	height: 50px;
+}

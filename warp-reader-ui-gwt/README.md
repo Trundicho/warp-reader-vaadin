@@ -1,6 +1,6 @@
-# Warp Reader GWT
+# Warp Reader
 
-Warp Rader is a project to support fast reading. This module i a implementation of the Warp-Reader-Core view api.
+Warp Rader is a project to support fast reading. This repository has the Warp-Reader-Core and a implementation of the Warp-Reader-Core view api.
 
 ![Alt Text](http://www.warpreader.trundicho.de/WarpReader.gif)
 
@@ -30,8 +30,8 @@ What things you need to install the software and how to install them
 
 1. Clone this repository
 2. In warp-reader pom.xml run `mvn clean install`
-3. Start gwt application class from your IDE maven plugins gwt:devmode
-4. Open browser at http://127.0.0.1:8888/ and use WarpReader
+3. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
+4. Open browser at localhost:8080 and use WarpReader
 
 ### Deployment
 

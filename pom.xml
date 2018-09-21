@@ -24,5 +24,6 @@
     <modules>
         <module>warp-reader-core</module>
         <module>warp-reader-ui-vaadin-8</module>
+        <module>warp-reader-ui-gwt</module>
     </modules>
 </project>
