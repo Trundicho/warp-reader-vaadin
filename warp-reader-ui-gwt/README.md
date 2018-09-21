@@ -13,10 +13,8 @@ Drag and drop Url's or copy and paste the text to read in the text area.
 [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/DlbKjgIBs-k/0.jpg)](http://www.youtube.com/watch?v=DlbKjgIBs-k)
 
 ## Developer documentation
-The warp-reader-ui-vaadin component is based on vaadin and spring-boot.  
-Because the timer widget is a gwt ported component it is necessary to build the module with vaadin-maven-plugin already configured in the pom.xml.  
-The default profile in the pom builds a war that is deployable in tomcat.  
-There is also a jetty profile if you want to use jetty.  
+The warp-reader-ui-gwt component is based on gwt.
+The default profile in the pom builds a war that is deployable in jetty.
 
 ## Getting Started
 What things you need to install the software and how to install them
@@ -35,8 +33,7 @@ What things you need to install the software and how to install them
 
 ### Deployment
 
-The default profile in the pom.xml builds a tomcat ready war.
-There is also a jetty profile that builds a jetty ready war.
+There is also a jetty profile that builds a jetty ready war in the target folder.
 
 ## Built With
 

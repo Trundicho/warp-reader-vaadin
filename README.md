@@ -35,8 +35,8 @@ What things you need to install the software and how to install them
 
 ### Deployment
 
-The default profile in the pom.xml builds a tomcat ready war.
-There is also a jetty profile that builds a jetty ready war.
+The default profile in the pom.xml builds a tomcat ready war in the target folder.
+There is also a jetty profile that builds a jetty ready war in the target folder.
 
 ## Built With
 
