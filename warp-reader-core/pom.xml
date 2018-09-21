@@ -53,11 +53,6 @@
                     <!-- DevMode configuration -->
                     <warDir>${project.build.directory}/${project.build.finalName}</warDir>
                     <classpathScope>compile+runtime</classpathScope>
-                    <!-- URL(s) that should be opened by DevMode (gwt:devmode). -->
-                    <startupUrls>
-                        <startupUrl>WarpReaderCore.html</startupUrl>
-                    </startupUrls>
-                    <style>DETAILED</style>
                 </configuration>
             </plugin>
         </plugins>

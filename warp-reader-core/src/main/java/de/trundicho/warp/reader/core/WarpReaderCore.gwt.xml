@@ -10,9 +10,6 @@
     <source path='controller'/>
     <source path='model'/>
     <source path='view'/>
-    <!-- gwt needs an entry point to build the module - has to be a class -->
-    <entry-point
-            class='de.trundicho.warp.reader.core.view.api.WarpReaderCore' />
     <!-- allow Super Dev Mode -->
     <add-linker name="xsiframe"/>
 </module>
