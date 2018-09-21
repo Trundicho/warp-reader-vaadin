@@ -1,4 +1,4 @@
-package de.trundicho.warp.reader.client.controller;
+package de.trundicho.warp.reader.client.view.gwt;
 
 public final class DefaultTextFactory {
 

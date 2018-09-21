@@ -2,40 +2,34 @@ package de.trundicho.warp.reader.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.Timer;
-
-import de.trundicho.warp.reader.client.controller.DefaultTextFactory;
-import de.trundicho.warp.reader.client.controller.TextAreaParser;
-import de.trundicho.warp.reader.client.controller.WarpTextAreaInitializer;
-import de.trundicho.warp.reader.client.controller.play.PlayButtonListenerInitializer;
-import de.trundicho.warp.reader.client.controller.position.ReadingPositionPlayModelUpdater;
-import de.trundicho.warp.reader.client.controller.position.ReadingPositionUpdaterListener;
-import de.trundicho.warp.reader.client.controller.speed.WpmBoxSpeedModelUpdater;
-import de.trundicho.warp.reader.client.model.playmode.PlayModeModel;
-import de.trundicho.warp.reader.client.model.playmode.PlayState;
-import de.trundicho.warp.reader.client.model.playmode.impl.PlayModeModelImpl;
-import de.trundicho.warp.reader.client.model.playmode.impl.PlayModel;
-import de.trundicho.warp.reader.client.model.speed.DelayModel;
-import de.trundicho.warp.reader.client.model.speed.SpeedWeightModel;
-import de.trundicho.warp.reader.client.model.speed.WpmSpeedExchanger;
-import de.trundicho.warp.reader.client.model.speed.impl.DelayModelImpl;
-import de.trundicho.warp.reader.client.model.speed.impl.SpeedWeightModelImpl;
-import de.trundicho.warp.reader.client.model.speed.impl.WpmSpeedExchangerImpl;
-import de.trundicho.warp.reader.client.model.warpword.TextSplitter;
-import de.trundicho.warp.reader.client.model.warpword.WordLengthModelMutable;
-import de.trundicho.warp.reader.client.model.warpword.impl.WordLengthModelImpl;
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewBuilder;
-import de.trundicho.warp.reader.client.view.api.WarpReaderViewModel;
-import de.trundicho.warp.reader.client.view.api.WebsiteParserAndWarper;
-import de.trundicho.warp.reader.client.view.api.timer.WarpTimerFactory;
-import de.trundicho.warp.reader.client.view.api.widgets.DurationWidget;
-import de.trundicho.warp.reader.client.view.api.widgets.InputTextWidget;
-import de.trundicho.warp.reader.client.view.api.widgets.PlayButtonWidget;
-import de.trundicho.warp.reader.client.view.api.widgets.ReadingPositionBox;
-import de.trundicho.warp.reader.client.view.api.widgets.WarpTextWidget;
-import de.trundicho.warp.reader.client.view.api.widgets.WordsPerMinuteWidget;
+import de.trundicho.warp.reader.client.view.gwt.DefaultTextFactory;
 import de.trundicho.warp.reader.client.view.gwt.WarpReaderViewBuilderImpl;
 import de.trundicho.warp.reader.client.view.gwt.WebsiteParserAndWarperImpl;
 import de.trundicho.warp.reader.client.view.gwt.timer.WarpTimerFactoryImpl;
+import de.trundicho.warp.reader.core.controller.WarpInitializer;
+import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
+import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
+import de.trundicho.warp.reader.core.controller.position.ReadingPositionUpdaterListener;
+import de.trundicho.warp.reader.core.controller.speed.WpmBoxSpeedModelUpdater;
+import de.trundicho.warp.reader.core.model.playmode.PlayModeModel;
+import de.trundicho.warp.reader.core.model.playmode.PlayState;
+import de.trundicho.warp.reader.core.model.playmode.impl.PlayModeModelImpl;
+import de.trundicho.warp.reader.core.model.playmode.impl.PlayModel;
+import de.trundicho.warp.reader.core.model.speed.DelayModel;
+import de.trundicho.warp.reader.core.model.speed.SpeedWeightModel;
+import de.trundicho.warp.reader.core.model.speed.WpmSpeedExchanger;
+import de.trundicho.warp.reader.core.model.speed.impl.DelayModelImpl;
+import de.trundicho.warp.reader.core.model.speed.impl.SpeedWeightModelImpl;
+import de.trundicho.warp.reader.core.model.speed.impl.WpmSpeedExchangerImpl;
+import de.trundicho.warp.reader.core.model.warpword.TextSplitter;
+import de.trundicho.warp.reader.core.model.warpword.WordLengthModelMutable;
+import de.trundicho.warp.reader.core.model.warpword.impl.WordLengthModelImpl;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewBuilder;
+import de.trundicho.warp.reader.core.view.api.WarpReaderViewModel;
+import de.trundicho.warp.reader.core.view.api.WebsiteParserAndWarper;
+import de.trundicho.warp.reader.core.view.api.parser.TextAreaParser;
+import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
+import de.trundicho.warp.reader.core.view.api.widgets.*;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -63,8 +57,8 @@ public class WarpReaderWeb implements EntryPoint {
 	}
 
 	private void initUiAndRegisterListeners(WarpReaderViewModel uiModel, WpmSpeedExchanger wpmSpeedExchanger,
-			DelayModel speedModel, PlayModeModel playModeModel, SpeedWeightModel speedWeightModel,
-			TextSplitter textSplitter, PlayModel playModel) {
+											DelayModel speedModel, PlayModeModel playModeModel, SpeedWeightModel speedWeightModel,
+											TextSplitter textSplitter, PlayModel playModel) {
 		initAndRegisterWpmBox(uiModel, wpmSpeedExchanger, speedModel);
 
 		PlayButtonWidget playButton = uiModel.getPlayButton();
@@ -81,8 +75,8 @@ public class WarpReaderWeb implements EntryPoint {
 		WarpTextWidget warpTextLabelUpdater = uiModel.getWarpTextLabelUpdater();
 
 		DurationWidget durationWidget = uiModel.getDurationLabel();
-		WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(playModel);
-		WarpTextAreaInitializer warpTextAreaInitializer = new WarpTextAreaInitializer(warpTextLabelUpdater, speedModel,
+		WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl();
+		WarpInitializer warpTextAreaInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
 				playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
 
 		WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpTextAreaInitializer);
@@ -100,7 +94,6 @@ public class WarpReaderWeb implements EntryPoint {
 
 	private void initAndRegisterReadingPosition(PlayModel playModel, ReadingPositionBox readingPosition) {
 		readingPosition.setReadPositionPercentage(Integer.valueOf(0));
-		readingPosition.setMaxLength(99);
 		readingPosition.registerChangeListenerAction(new ReadingPositionPlayModelUpdater(readingPosition, playModel));
 		playModel.addListener(new ReadingPositionUpdaterListener(readingPosition));
 	}

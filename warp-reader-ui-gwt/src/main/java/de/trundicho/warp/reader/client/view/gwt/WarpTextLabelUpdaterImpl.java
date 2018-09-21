@@ -2,8 +2,7 @@ package de.trundicho.warp.reader.client.view.gwt;
 
 import com.google.gwt.user.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
-
-import de.trundicho.warp.reader.client.view.api.widgets.WarpTextWidget;
+import de.trundicho.warp.reader.core.view.api.widgets.WarpTextWidget;
 
 class WarpTextLabelUpdaterImpl implements WarpTextWidget {
 
