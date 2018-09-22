@@ -30,13 +30,10 @@ What things you need to install the software and how to install them
 
 - Java 8 JDK
 - A JAVA IDE
-- Vaadin 8 or
-- GWT
-
 ### Installing and running warp-reader-ui-vaadin
 
 1. Clone this repository
-2. In warp-reader pom.xml run `mvn clean install`
+2. In warp-reader pom.xml run `mvn clean install -Pwarp-reader-vaadin-spring-boot` OR run `mvn clean install -Pwarp-reader-vaadin-jetty`
 3. Start WarpReaderApplication class from your IDE. Spring-Boot Tomcat will be started.
 4. Open browser at localhost:8080 and use WarpReader
 
@@ -49,9 +46,8 @@ What things you need to install the software and how to install them
 
 ### Deployment
 
-Just run the upper maven commands to generate war files for tomcat or jetty.  
-The default profile in the vaadin-ui pom.xml builds a tomcat ready war to be run from within your IDE.  
-There is also a jetty profile `vaadin-jetty` in the vaadin-ui pom.xml that builds a jetty ready war in the target folder.
+Put the generated war files in your application server (Tomcat, Jetty) or run the spring-boot 
+vaadin version with internal tomcat.
 
 ## Built With
 
