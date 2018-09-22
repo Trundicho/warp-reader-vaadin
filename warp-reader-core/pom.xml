@@ -11,7 +11,6 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>warp-reader-core</artifactId>
-
     <build>
         <plugins>
             <plugin>
@@ -22,53 +21,8 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- GWT Maven Plugin -->
-            <plugin>
-                <groupId>net.ltgt.gwt.maven</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <version>1.0-rc-6</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>import-sources</goal>
-                            <goal>compile</goal>
-                            <goal>import-test-sources</goal>
-                            <goal>test</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <moduleName>de.trundicho.warp.reader.core.WarpReaderCore</moduleName>
-                    <moduleShortName>WarpReaderCore</moduleShortName>
-                    <failOnError>true</failOnError>
-                    <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if
-                        you use a different source language for java compilation -->
-                    <sourceLevel>1.8</sourceLevel>
-                    <!-- Compiler configuration -->
-                    <compilerArgs>
-                        <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
-                        <arg>-compileReport</arg>
-                        <arg>-XcompilerMetrics</arg>
-                    </compilerArgs>
-                    <!-- DevMode configuration -->
-                    <warDir>${project.build.directory}/${project.build.finalName}</warDir>
-                    <classpathScope>compile+runtime</classpathScope>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-    <dependencyManagement>
-        <dependencies>
-            <!-- ensure all GWT deps use the same version (unless overridden) -->
-            <dependency>
-                <groupId>com.google.gwt</groupId>
-                <artifactId>gwt</artifactId>
-                <version>2.8.0</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
@@ -76,21 +30,83 @@
             <version>5.1.0</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-servlet</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <scope>provided</scope>
-        </dependency>
     </dependencies>
 
+    <profiles>
+        <profile>
+            <id>warp-reader-core-default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>warp-reader-gwt</id>
+            <build>
+                <plugins>
+                    <!-- GWT Maven Plugin -->
+                    <plugin>
+                        <groupId>net.ltgt.gwt.maven</groupId>
+                        <artifactId>gwt-maven-plugin</artifactId>
+                        <version>1.0-rc-6</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>import-sources</goal>
+                                    <goal>compile</goal>
+                                    <goal>import-test-sources</goal>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <moduleName>de.trundicho.warp.reader.core.WarpReaderCore</moduleName>
+                            <moduleShortName>WarpReaderCore</moduleShortName>
+                            <failOnError>true</failOnError>
+                            <!-- GWT compiler 2.8 requires 1.8, hence define sourceLevel here if
+                                you use a different source language for java compilation -->
+                            <sourceLevel>1.8</sourceLevel>
+                            <!-- Compiler configuration -->
+                            <compilerArgs>
+                                <!-- Ask GWT to create the Story of Your Compile (SOYC) (gwt:compile) -->
+                                <arg>-compileReport</arg>
+                                <arg>-XcompilerMetrics</arg>
+                            </compilerArgs>
+                            <!-- DevMode configuration -->
+                            <warDir>${project.build.directory}/${project.build.finalName}</warDir>
+                            <classpathScope>compile+runtime</classpathScope>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+            <dependencyManagement>
+                <dependencies>
+                    <!-- ensure all GWT deps use the same version (unless overridden) -->
+                    <dependency>
+                        <groupId>com.google.gwt</groupId>
+                        <artifactId>gwt</artifactId>
+                        <version>2.8.0</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
+            <dependencies>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-servlet</artifactId>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-user</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.google.gwt</groupId>
+                    <artifactId>gwt-dev</artifactId>
+                    <scope>provided</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
 </project>

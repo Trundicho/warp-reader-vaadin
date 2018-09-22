@@ -26,7 +26,7 @@
     </modules>
     <profiles>
         <profile>
-            <id>warp-reader-vaadin</id>
+            <id>warp-reader-core-default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
