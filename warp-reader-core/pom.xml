@@ -34,7 +34,7 @@
 
     <profiles>
         <profile>
-            <id>warp-reader-core-default</id>
+            <id>warp-reader-plain-java</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>

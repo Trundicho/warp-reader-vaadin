@@ -21,22 +21,21 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
-    <modules>
-        <module>warp-reader-core</module>
-    </modules>
     <profiles>
         <profile>
-            <id>warp-reader-core-default</id>
+            <id>warp-reader-vaadin</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
+                <module>warp-reader-core</module>
                 <module>warp-reader-ui-vaadin-8</module>
             </modules>
         </profile>
         <profile>
             <id>warp-reader-gwt</id>
             <modules>
+                <module>warp-reader-core</module>
                 <module>warp-reader-ui-gwt</module>
             </modules>
         </profile>
