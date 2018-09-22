@@ -21,7 +21,7 @@
     </properties>
     <profiles>
         <profile>
-            <id>vaadin-tomcat</id>
+            <id>warp-reader-vaadin-tomcat</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>
@@ -33,7 +33,7 @@
             </activation>
         </profile>
         <profile>
-            <id>vaadin-jetty</id>
+            <id>warp-reader-vaadin-jetty</id>
             <dependencies>
                 <dependency>
                     <groupId>org.springframework.boot</groupId>

@@ -23,10 +23,17 @@
     </properties>
     <profiles>
         <profile>
-            <id>warp-reader-vaadin</id>
+            <id>warp-reader-vaadin-tomcat</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <modules>
+                <module>warp-reader-core</module>
+                <module>warp-reader-ui-vaadin-8</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>warp-reader-vaadin-jetty</id>
             <modules>
                 <module>warp-reader-core</module>
                 <module>warp-reader-ui-vaadin-8</module>
