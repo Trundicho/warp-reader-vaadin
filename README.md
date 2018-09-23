@@ -1,6 +1,6 @@
 # Warp Reader
 
-Warp Reader is a project to support fast reading. This repository has the Warp-Reader-Core and multiple ui implementations.
+Warp Reader is a [RSVP](https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation) (rapid serial visual presentation) reader for fast reading. This repository has the Warp-Reader-Core and multiple ui implementations.
 
 ![Alt Text](http://www.warpreader.trundicho.de/WarpReader.gif)
 
