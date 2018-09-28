@@ -6,6 +6,7 @@ import com.vaadin.server.VaadinRequest;
 import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.Timer;
 import com.vaadin.ui.UI;
+import de.trundicho.warp.reader.core.controller.Disposer;
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
 import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
@@ -44,9 +45,11 @@ public class WarpReaderView extends UI {
     private static final int DEFAULT_WORDS_PER_MINUTE = 260;
     private static final int TEXT_AREA_PARSER_DELAY = 500;
     private I18nLocalizer i18nLocalizer;
+    private Disposer disposer;
 
     @Override
     protected void init(VaadinRequest request) {
+        disposer = new Disposer();
         i18nLocalizer = new I18nLocalizer(Locale.ENGLISH);
         PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PLAYING);
         WordLengthModelMutable wordLengthModel = new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY);
@@ -62,6 +65,12 @@ public class WarpReaderView extends UI {
         initUiAndRegisterListeners(uiModel, wpmSpeedExchanger, speedModel, playModeModel, speedWeightModel,
                 textSplitter, playModel);
         new CssStyler().applyCssStyles();
+    }
+
+    @Override
+    public void close() {
+        disposer.doDispose();
+        super.close();
     }
 
     private void initUiAndRegisterListeners(WarpReaderViewModel uiModel, WpmSpeedExchanger wpmSpeedExchanger,
@@ -93,6 +102,8 @@ public class WarpReaderView extends UI {
         Timer textAreaParserTimer = textAreaParserTimerBuilder.buildTextAreaParserTimer(inputTextWidget);
         textAreaParserTimer.scheduleRepeatable(TEXT_AREA_PARSER_DELAY);
         addExtension(textAreaParserTimer);
+        disposer.add(() -> textAreaParserTimer.cancel());
+        disposer.add(() -> warpInitializer.dispose());
     }
 
     public void addExtension(Extension extension) {

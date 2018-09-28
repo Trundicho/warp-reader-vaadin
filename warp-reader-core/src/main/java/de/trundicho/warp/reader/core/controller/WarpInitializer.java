@@ -57,6 +57,10 @@ public class WarpInitializer {
         playModeModel.setPlayState(PlayState.PLAYING);
     }
 
+    public void dispose(){
+        disposer.doDispose();
+    }
+
     private void initListeners(DelayModel speedModel, PlayModeModel playModeModel, DurationWidget durationWidget,
                                final String[] splittedText, SpeedCalculator speedCalculator, PlayModel playModel,
                                WarpTextWidget warpTextLabelUpdater) {
