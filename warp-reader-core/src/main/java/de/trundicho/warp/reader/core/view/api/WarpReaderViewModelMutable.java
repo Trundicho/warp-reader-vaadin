@@ -12,7 +12,7 @@ public interface WarpReaderViewModelMutable extends WarpReaderViewModel {
 
 	void setWarpTextLabelUpdater(WarpTextWidget warpTextLabelUpdater);
 
-	void setDurationLabel(DurationWidget durationWidget);
+	void setDurationLabel(NumberLabelWidget durationWidget);
 
 	void setReadPosition(ReadingPositionBox wordLengthBox);
 

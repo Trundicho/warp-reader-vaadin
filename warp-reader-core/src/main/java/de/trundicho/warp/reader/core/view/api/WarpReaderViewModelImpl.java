@@ -7,7 +7,7 @@ public class WarpReaderViewModelImpl implements WarpReaderViewModelMutable {
 	private PlayButtonWidget playButton;
 	private InputTextWidget inputTextWidget;
 	private WarpTextWidget warpTextLabelUpdater;
-	private DurationWidget durationWidget;
+	private NumberLabelWidget durationWidget;
 	private ReadingPositionBox wordLengthBox;
 
 	public WordsPerMinuteWidget getWordsPerMinuteBox() {
@@ -42,11 +42,11 @@ public class WarpReaderViewModelImpl implements WarpReaderViewModelMutable {
 		this.warpTextLabelUpdater = warpTextLabelUpdater;
 	}
 
-	public DurationWidget getDurationLabel() {
+	public NumberLabelWidget getDurationLabel() {
 		return durationWidget;
 	}
 
-	public void setDurationLabel(DurationWidget durationWidget) {
+	public void setDurationLabel(NumberLabelWidget durationWidget) {
 		this.durationWidget = durationWidget;
 	}
 

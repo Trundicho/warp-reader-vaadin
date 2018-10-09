@@ -17,7 +17,7 @@ import de.trundicho.warp.reader.core.model.warpword.WarpWordBuilder;
 import de.trundicho.warp.reader.core.model.warpword.impl.DisplayTextModelImpl;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
-import de.trundicho.warp.reader.core.view.api.widgets.DurationWidget;
+import de.trundicho.warp.reader.core.view.api.widgets.NumberLabelWidget;
 import de.trundicho.warp.reader.core.view.api.widgets.WarpTextWidget;
 
 public class WarpInitializer {
@@ -26,7 +26,7 @@ public class WarpInitializer {
     private final PlayModeModel playModeModel;
     private final Disposer disposer;
     private final DelayModel speedModel;
-    private final DurationWidget durationWidget;
+    private final NumberLabelWidget durationWidget;
     private final SpeedCalculator speedCalculator;
     private final PlayModel playModel;
     private final WarpTextWidget warpTextLabelUpdater;
@@ -35,7 +35,7 @@ public class WarpInitializer {
 
     public WarpInitializer(WarpTextWidget warpTextLabelUpdater, DelayModel speedModel,
                            PlayModeModel playModeModel, SpeedWeightModel speedWeightModel, TextSplitter textSplitter,
-                           PlayModel playModel, DurationWidget durationWidget, WarpTimerFactory warpTimerFactory) {
+                           PlayModel playModel, NumberLabelWidget durationWidget, WarpTimerFactory warpTimerFactory) {
         this.warpTextLabelUpdater = warpTextLabelUpdater;
         this.speedModel = speedModel;
         this.playModeModel = playModeModel;
@@ -61,12 +61,12 @@ public class WarpInitializer {
         disposer.doDispose();
     }
 
-    private void initListeners(DelayModel speedModel, PlayModeModel playModeModel, DurationWidget durationWidget,
+    private void initListeners(DelayModel speedModel, PlayModeModel playModeModel, NumberLabelWidget durationWidget,
                                final String[] splittedText, SpeedCalculator speedCalculator, PlayModel playModel,
                                WarpTextWidget warpTextLabelUpdater) {
         int overallDuration = durationCalculator.computeOverallDuration(splittedText);
 
-        durationWidget.updateDurationLabel(overallDuration);
+        durationWidget.updateNumberLabel(overallDuration);
 
         final SpeedModelDurationLabelUpdateListener durationLabelListener = new SpeedModelDurationLabelUpdateListener(
                 splittedText, durationCalculator, durationWidget);

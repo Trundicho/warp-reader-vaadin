@@ -12,7 +12,7 @@ public interface WarpReaderViewModel {
 
 	WarpTextWidget getWarpTextLabelUpdater();
 
-	DurationWidget getDurationLabel();
+	NumberLabelWidget getDurationLabel();
 
 	ReadingPositionBox getReadPosition();
 

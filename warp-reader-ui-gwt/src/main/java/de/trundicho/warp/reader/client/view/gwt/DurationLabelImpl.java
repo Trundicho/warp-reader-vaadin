@@ -1,9 +1,9 @@
 package de.trundicho.warp.reader.client.view.gwt;
 
 import com.google.gwt.user.client.ui.Label;
-import de.trundicho.warp.reader.core.view.api.widgets.DurationWidget;
+import de.trundicho.warp.reader.core.view.api.widgets.NumberLabelWidget;
 
-public class DurationLabelImpl implements DurationWidget {
+public class DurationLabelImpl implements NumberLabelWidget {
 
 	private Label durationLabel;
 
@@ -11,7 +11,7 @@ public class DurationLabelImpl implements DurationWidget {
 		this.durationLabel = durationLabel;
 	}
 
-	public void updateDurationLabel(int overallDurationMs) {
+	public void updateNumberLabel(int overallDurationMs) {
 		int seconds = (overallDurationMs / 1000) % 60;
 		long minutes = ((overallDurationMs / 1000) / 60);// % 60;
 		int hours = (((overallDurationMs / 1000) / 60) / 60);

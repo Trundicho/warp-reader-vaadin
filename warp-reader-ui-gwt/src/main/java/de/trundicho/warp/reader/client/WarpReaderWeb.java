@@ -74,7 +74,7 @@ public class WarpReaderWeb implements EntryPoint {
 
 		WarpTextWidget warpTextLabelUpdater = uiModel.getWarpTextLabelUpdater();
 
-		DurationWidget durationWidget = uiModel.getDurationLabel();
+		NumberLabelWidget durationWidget = uiModel.getDurationLabel();
 		WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl();
 		WarpInitializer warpTextAreaInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
 				playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);

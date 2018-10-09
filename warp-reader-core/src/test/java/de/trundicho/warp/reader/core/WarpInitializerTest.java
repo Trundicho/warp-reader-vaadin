@@ -12,14 +12,14 @@ import de.trundicho.warp.reader.core.model.speed.impl.SpeedWeightModelImpl;
 import de.trundicho.warp.reader.core.model.warpword.TextSplitter;
 import de.trundicho.warp.reader.core.model.warpword.impl.WordLengthModelImpl;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
-import de.trundicho.warp.reader.core.view.api.widgets.DurationWidget;
+import de.trundicho.warp.reader.core.view.api.widgets.NumberLabelWidget;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-class WarpInitializerTest {
+public class WarpInitializerTest {
     private static final int DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY = 15;
     private static final int DEFAULT_DELAY = 50;
     private WarpInitializer warpInitializer;
@@ -37,7 +37,7 @@ class WarpInitializerTest {
         SpeedWeightModel speedWeightModel = new SpeedWeightModelImpl();
         TextSplitter textSplitter = new TextSplitter(new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY));
         warpTextLabelUpdater = new WarpTextWidgetForTest();
-        DurationWidget durationWidget = new DurationWidgetForTest();
+        NumberLabelWidget durationWidget = new DurationWidgetForTest();
         WarpTimerFactory warpTimerFactory = new WarpTimerFactoryForTest();
         warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel, playModeModel,
                 speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
