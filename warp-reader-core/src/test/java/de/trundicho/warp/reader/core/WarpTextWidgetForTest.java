@@ -15,7 +15,9 @@ class WarpTextWidgetForTest implements WarpTextWidget {
 
     @Override
     public void setWarpText(String leftPart, String centerPart, String rightPart) {
-        warpedTextLines.add(leftPart + centerPart + rightPart);
+        final String text = leftPart + centerPart + rightPart;
+        warpedTextLines.add(text);
+        System.err.println(text);
     }
 
     /**

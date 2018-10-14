@@ -42,7 +42,7 @@ import java.util.Locale;
 public class WarpReaderView extends UI {
 
     private static final int DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY = 15;
-    private static final int DEFAULT_WORDS_PER_MINUTE = 260;
+    private static final int DEFAULT_WORDS_PER_MINUTE = 200;
     private static final int TEXT_AREA_PARSER_DELAY = 500;
     private I18nLocalizer i18nLocalizer;
     private Disposer disposer;
@@ -51,7 +51,7 @@ public class WarpReaderView extends UI {
     protected void init(VaadinRequest request) {
         disposer = new Disposer();
         i18nLocalizer = new I18nLocalizer(Locale.ENGLISH);
-        PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PLAYING);
+        PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PAUSE);
         WordLengthModelMutable wordLengthModel = new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY);
         TextSplitter textSplitter = new TextSplitter(wordLengthModel);
         SpeedWeightModel speedWeightModel = new SpeedWeightModelImpl();

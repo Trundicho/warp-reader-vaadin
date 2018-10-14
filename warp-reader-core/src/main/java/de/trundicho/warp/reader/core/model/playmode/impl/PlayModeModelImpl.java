@@ -25,9 +25,12 @@ public final class PlayModeModelImpl implements PlayModeModel {
 
 	@Override
 	public void setPlayState(PlayState playState) {
+		PlayState old = this.playState;
 		this.playState = playState;
-		for (Listener listener : listeners) {
-			listener.playStateChanged(playState);
+		if (!old.equals(playState)) {
+			for (Listener listener : listeners) {
+                listener.playStateChanged(playState);
+            }
 		}
 	}
 

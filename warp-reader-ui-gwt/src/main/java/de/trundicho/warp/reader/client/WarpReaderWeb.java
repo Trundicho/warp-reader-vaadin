@@ -37,11 +37,11 @@ import de.trundicho.warp.reader.core.view.api.widgets.*;
 public class WarpReaderWeb implements EntryPoint {
 
 	private static final int DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY = 15;
-	private static final int DEFAULT_WORDS_PER_MINUTE = 240;
+	private static final int DEFAULT_WORDS_PER_MINUTE = 200;
 	private static final int TEXT_AREA_PARSER_DELAY = 500;
 
 	public void onModuleLoad() {
-		PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PLAYING);
+		PlayModeModel playModeModel = new PlayModeModelImpl(PlayState.PAUSE);
 		WordLengthModelMutable wordLengthModel = new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY);
 		TextSplitter textSplitter = new TextSplitter(wordLengthModel);
 		SpeedWeightModel speedWeightModel = new SpeedWeightModelImpl();

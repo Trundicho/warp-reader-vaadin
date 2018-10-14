@@ -7,8 +7,10 @@ import de.trundicho.warp.reader.core.model.playmode.impl.PlayModeModelImpl;
 import de.trundicho.warp.reader.core.model.playmode.impl.PlayModel;
 import de.trundicho.warp.reader.core.model.speed.DelayModel;
 import de.trundicho.warp.reader.core.model.speed.SpeedWeightModel;
+import de.trundicho.warp.reader.core.model.speed.WpmSpeedExchanger;
 import de.trundicho.warp.reader.core.model.speed.impl.DelayModelImpl;
 import de.trundicho.warp.reader.core.model.speed.impl.SpeedWeightModelImpl;
+import de.trundicho.warp.reader.core.model.speed.impl.WpmSpeedExchangerImpl;
 import de.trundicho.warp.reader.core.model.warpword.TextSplitter;
 import de.trundicho.warp.reader.core.model.warpword.impl.WordLengthModelImpl;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
@@ -21,10 +23,10 @@ import java.util.List;
 
 public class WarpInitializerTest {
     private static final int DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY = 15;
-    private static final int DEFAULT_DELAY = 50;
+    private static final int UPDATES_PER_MINUTE = 250;
     private WarpInitializer warpInitializer;
     private WarpTextWidgetForTest warpTextLabelUpdater;
-    private static final int TEST_WARP_DURATION_IN_MS = 500;
+    private static final int TEST_WARP_DURATION_IN_MS = 3500;
     private PlayModel playModel;
     private PlayModeModel  playModeModel;
     private static final String INITIAL_TEXT = "WarpReader Copy and paste your text or URL into the text field and start reading. As you get faster just increase the tempo as much as you like. Have fun reading at warp speed with WarpReader";
@@ -32,8 +34,10 @@ public class WarpInitializerTest {
     @BeforeEach
     void setUp() {
         this.playModel = new PlayModel();
-        DelayModel speedModel = new DelayModelImpl(DEFAULT_DELAY);
-        playModeModel = new PlayModeModelImpl(PlayState.PLAYING);
+        WpmSpeedExchanger wpmSpeedExchanger = new WpmSpeedExchangerImpl();
+        double DELAY = wpmSpeedExchanger.exchangeToSpeed(UPDATES_PER_MINUTE);
+        DelayModel speedModel = new DelayModelImpl(DELAY);
+        playModeModel = new PlayModeModelImpl(PlayState.PAUSE);
         SpeedWeightModel speedWeightModel = new SpeedWeightModelImpl();
         TextSplitter textSplitter = new TextSplitter(new WordLengthModelImpl(DEFAULT_NUMBER_OF_CHARS_TO_DISPLAY));
         warpTextLabelUpdater = new WarpTextWidgetForTest();

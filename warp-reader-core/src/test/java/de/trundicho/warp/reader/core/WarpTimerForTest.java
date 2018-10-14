@@ -3,19 +3,23 @@ package de.trundicho.warp.reader.core;
 import de.trundicho.warp.reader.core.controller.WarpUpdater;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
+import java.util.Timer;
+import java.util.TimerTask;
 
 class WarpTimerForTest implements WarpTimer {
-    private final WarpUpdater warpUpdater;
-    private final ScheduledExecutorService scheduledExecutorService;
-    private ScheduledFuture<?> schedule;
+    private Timer timer;
+    private final Runnable runnable;
 
     WarpTimerForTest(WarpUpdater warpUpdater) {
-        this.warpUpdater = warpUpdater;
-        scheduledExecutorService = Executors.newScheduledThreadPool(1);
+        timer = new Timer("Timer");
+        runnable = new Runnable() {
+
+            @Override
+            public void run() {
+                warpUpdater.doNextWarp();
+            }
+        };
+
     }
 
     @Override
@@ -25,17 +29,17 @@ class WarpTimerForTest implements WarpTimer {
 
     @Override
     public void cancel() {
-        schedule.cancel(false);
+        timer.cancel();
     }
 
     @Override
     public void scheduleRepeating(int periodMillis) {
-        Runnable task = new Runnable() {
+        TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
-                doNextWarp(warpUpdater);
+                runnable.run();
             }
         };
-        schedule = scheduledExecutorService.schedule(task, periodMillis, TimeUnit.MILLISECONDS);
+        timer.schedule(timerTask, periodMillis);
     }
 }
