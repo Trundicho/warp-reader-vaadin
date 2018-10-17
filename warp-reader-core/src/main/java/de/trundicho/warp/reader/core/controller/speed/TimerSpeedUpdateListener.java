@@ -12,8 +12,6 @@ public class TimerSpeedUpdateListener implements DelayModel.SpeedUpdateListener 
 	public TimerSpeedUpdateListener(DelayModel speedModel, PlayModeModel playModeModel, WarpTimer timer) {
 		this.playModeModel = playModeModel;
 		this.timer = timer;
-		double delay = speedModel.getDefaultDelay();
-		updateTimerSpeed(delay, delay);
 	}
 
 	@Override
