@@ -49,9 +49,9 @@ public class WarpInitializer {
     }
 
     public void initAndStartWarping(String inputText) {
+        playModeModel.setPlayState(PlayState.PAUSE);
         disposer.doDispose();
         final String[] combined = getSplittedText(inputText);
-
         initListeners(speedModel, playModeModel, durationWidget, combined, speedCalculator, playModel,
                 warpTextLabelUpdater);
         playModeModel.setPlayState(PlayState.PLAYING);
