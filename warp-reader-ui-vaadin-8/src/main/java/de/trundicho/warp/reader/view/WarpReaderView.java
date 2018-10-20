@@ -98,7 +98,8 @@ public class WarpReaderView extends UI {
         WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
 
-        TextAreaParserTimerBuilder textAreaParserTimerBuilder = new TextAreaParserTimerBuilder(warpInitializer, i18nLocalizer);
+        TextAreaParserTimerBuilder textAreaParserTimerBuilder = new TextAreaParserTimerBuilder(warpInitializer, i18nLocalizer,
+                inputTextWidget);
         Timer textAreaParserTimer = textAreaParserTimerBuilder.buildTextAreaParserTimer(inputTextWidget);
         textAreaParserTimer.scheduleRepeatable(TEXT_AREA_PARSER_DELAY);
         addExtension(textAreaParserTimer);

@@ -12,15 +12,21 @@ public class TextAreaParserTimerBuilder {
 
     private final TextAreaParser textAreaParser;
 
-    public TextAreaParserTimerBuilder(WarpInitializer warpInitializer, I18nLocalizer i18nLocalizer) {
-        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer, i18nLocalizer);
+    public TextAreaParserTimerBuilder(WarpInitializer warpInitializer, I18nLocalizer i18nLocalizer,
+                                      InputTextWidget inputTextWidget) {
+        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpInitializer, i18nLocalizer,
+                inputTextWidget);
         this.textAreaParser = new TextAreaParser(warpInitializer, websiteParserAndWarper);
     }
 
     public Timer buildTextAreaParserTimer(InputTextWidget inputTextWidget) {
         Timer textAreaParserTimer = new Timer();
         textAreaParserTimer.run(() ->
-                textAreaParser.parseInputTextAndStartWarping(inputTextWidget));
+                {
+                    textAreaParser.parseInputTextAndStartWarping(inputTextWidget.getText());
+                    inputTextWidget.setText("");
+                }
+        );
         return textAreaParserTimer;
     }
 

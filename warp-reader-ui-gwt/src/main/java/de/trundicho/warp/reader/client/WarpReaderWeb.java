@@ -79,13 +79,14 @@ public class WarpReaderWeb implements EntryPoint {
         WarpInitializer warpTextAreaInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
                 playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
 
-        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpTextAreaInitializer);
+        WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpTextAreaInitializer, inputTextWidget);
         TextAreaParser textAreaParser = new TextAreaParser(warpTextAreaInitializer, websiteParserAndWarper);
         Timer textAreaParserTimer = new Timer() {
 
             @Override
             public void run() {
-                textAreaParser.parseInputTextAndStartWarping(inputTextWidget);
+                textAreaParser.parseInputTextAndStartWarping(inputTextWidget.getText());
+                inputTextWidget.setText("");
             }
 
         };

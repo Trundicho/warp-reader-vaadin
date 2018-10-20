@@ -11,14 +11,15 @@ import de.trundicho.warp.reader.core.view.api.widgets.InputTextWidget;
 public class WebsiteParserAndWarperImpl implements WebsiteParserAndWarper {
 	private final TextFromWebUrlParserServiceAsync boilerplateService = GWT.create(TextFromWebUrlParserService.class);
 	private final WarpInitializer warpTextAreaInitializer;
+	private final InputTextWidget textArea;
 
-	public WebsiteParserAndWarperImpl(WarpInitializer warpTextAreaInitializer) {
+	public WebsiteParserAndWarperImpl(WarpInitializer warpTextAreaInitializer, InputTextWidget textArea) {
 		this.warpTextAreaInitializer = warpTextAreaInitializer;
+		this.textArea = textArea;
 	}
 
 	@Override
-	public void parseWebsiteAndStartWarping(InputTextWidget textArea) {
-		String text = textArea.getText();
+	public void parseWebsiteAndStartWarping(String text) {
 		AsyncCallback<String> boilerpipeAsyncCallback = new BoilerpipeAsyncCallback(textArea, text,
 				warpTextAreaInitializer);
 		boilerplateService.parseTextFromWebsite(text, boilerpipeAsyncCallback);

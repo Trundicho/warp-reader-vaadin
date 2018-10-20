@@ -2,7 +2,6 @@ package de.trundicho.warp.reader.core.view.api.parser;
 
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
 import de.trundicho.warp.reader.core.view.api.WebsiteParserAndWarper;
-import de.trundicho.warp.reader.core.view.api.widgets.InputTextWidget;
 
 public final class TextAreaParser {
 
@@ -15,14 +14,12 @@ public final class TextAreaParser {
         this.websiteParserAndWarper = websiteParserAndWarper;
     }
 
-    public void parseInputTextAndStartWarping(InputTextWidget textArea) {
-        String text = textArea.getText();
+    public void parseInputTextAndStartWarping(String text) {
         if (text != null && !text.isEmpty()) {
             if (text.startsWith("http")) {
-                websiteParserAndWarper.parseWebsiteAndStartWarping(textArea);
+                websiteParserAndWarper.parseWebsiteAndStartWarping(text);
             } else {
                 warpInitializer.initAndStartWarping(text);
-                textArea.setText("");
             }
         }
     }
