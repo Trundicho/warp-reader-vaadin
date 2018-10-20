@@ -16,4 +16,6 @@ public interface WarpReaderViewModelMutable extends WarpReaderViewModel {
 
 	void setReadPosition(ReadingPositionBox wordLengthBox);
 
+	void setClipboardButton(ButtonWidget clipboardButton);
+
 }

@@ -9,6 +9,7 @@ public class WarpReaderViewModelImpl implements WarpReaderViewModelMutable {
 	private WarpTextWidget warpTextLabelUpdater;
 	private NumberLabelWidget durationWidget;
 	private ReadingPositionBox wordLengthBox;
+	private ButtonWidget clipboardButton;
 
 	public WordsPerMinuteWidget getWordsPerMinuteBox() {
 		return wpmBox;
@@ -56,5 +57,15 @@ public class WarpReaderViewModelImpl implements WarpReaderViewModelMutable {
 
 	public ReadingPositionBox getReadPosition() {
 		return wordLengthBox;
+	}
+
+	@Override
+	public void setClipboardButton(ButtonWidget clipboardButton) {
+		this.clipboardButton = clipboardButton;
+	}
+
+	@Override
+	public ButtonWidget getClipBoardButton() {
+		return clipboardButton;
 	}
 }
