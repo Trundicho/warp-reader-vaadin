@@ -8,6 +8,7 @@ import com.vaadin.ui.Timer;
 import com.vaadin.ui.UI;
 import de.trundicho.warp.reader.core.controller.Disposer;
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
+import de.trundicho.warp.reader.core.controller.WarpUpdater;
 import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionUpdaterListener;
@@ -27,10 +28,10 @@ import de.trundicho.warp.reader.core.model.warpword.WordLengthModelMutable;
 import de.trundicho.warp.reader.core.model.warpword.impl.WordLengthModelImpl;
 import de.trundicho.warp.reader.core.view.api.WarpReaderViewBuilder;
 import de.trundicho.warp.reader.core.view.api.WarpReaderViewModel;
-import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
+import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
 import de.trundicho.warp.reader.core.view.api.widgets.*;
 import de.trundicho.warp.reader.view.parser.TextAreaParserTimerBuilder;
-import de.trundicho.warp.reader.view.timer.WarpTimerFactoryImpl;
+import de.trundicho.warp.reader.view.timer.WarpTimerImpl;
 import de.trundicho.warp.reader.view.ui.CssStyler;
 import de.trundicho.warp.reader.view.ui.I18nLocalizer;
 import de.trundicho.warp.reader.view.ui.WarpReaderViewBuilderImpl;
@@ -93,10 +94,10 @@ public class WarpReaderView extends UI {
         WarpTextWidget warpTextLabelUpdater = uiModel.getWarpTextLabelUpdater();
 
         NumberLabelWidget durationWidget = uiModel.getDurationLabel();
-        WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl(this);
+        WarpTimer warpTimer = new WarpTimerImpl(new WarpUpdater(playModel), this);
 
         WarpInitializer warpInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
-                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
+                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimer);
 
         TextAreaParserTimerBuilder textAreaParserTimerBuilder = new TextAreaParserTimerBuilder(warpInitializer, i18nLocalizer,
                 inputTextWidget);

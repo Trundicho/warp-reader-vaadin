@@ -16,7 +16,6 @@ import de.trundicho.warp.reader.core.model.warpword.TextSplitter;
 import de.trundicho.warp.reader.core.model.warpword.WarpWordBuilder;
 import de.trundicho.warp.reader.core.model.warpword.impl.DisplayTextModelImpl;
 import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
-import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
 import de.trundicho.warp.reader.core.view.api.widgets.NumberLabelWidget;
 import de.trundicho.warp.reader.core.view.api.widgets.WarpTextWidget;
 
@@ -27,22 +26,22 @@ public class WarpInitializer {
     private final Disposer disposer;
     private final DelayModel speedModel;
     private final NumberLabelWidget durationWidget;
+    private final WarpTimer warpTimer;
     private final SpeedCalculator speedCalculator;
     private final PlayModel playModel;
     private final WarpTextWidget warpTextLabelUpdater;
-    private final WarpTimerFactory warpTimerFactory;
     private final DurationCalculator durationCalculator;
 
     public WarpInitializer(WarpTextWidget warpTextLabelUpdater, DelayModel speedModel,
                            PlayModeModel playModeModel, SpeedWeightModel speedWeightModel, TextSplitter textSplitter,
-                           PlayModel playModel, NumberLabelWidget durationWidget, WarpTimerFactory warpTimerFactory) {
+                           PlayModel playModel, NumberLabelWidget durationWidget, WarpTimer warpTimer) {
         this.warpTextLabelUpdater = warpTextLabelUpdater;
         this.speedModel = speedModel;
         this.playModeModel = playModeModel;
         this.textSplitter = textSplitter;
         this.playModel = playModel;
         this.durationWidget = durationWidget;
-        this.warpTimerFactory = warpTimerFactory;
+        this.warpTimer = warpTimer;
         this.disposer = new Disposer();
         this.speedCalculator = new SpeedCalculator(speedModel, speedWeightModel);
         this.durationCalculator = new DurationCalculator(speedCalculator);
@@ -72,7 +71,6 @@ public class WarpInitializer {
                 splittedText, durationCalculator, durationWidget);
         speedModel.addListener(durationLabelListener);
 
-        final WarpTimer warpTimer = warpTimerFactory.createWarpTimer(new WarpUpdater(playModel));
         final PlayStateListener playStateListener = new PlayStateListener(warpTimer, speedModel);
         playModeModel.addListener(playStateListener);
         final TimerSpeedUpdateListener timerSpeedUpdateListener = new TimerSpeedUpdateListener(speedModel,

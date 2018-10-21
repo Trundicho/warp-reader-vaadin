@@ -5,8 +5,9 @@ import com.google.gwt.user.client.Timer;
 import de.trundicho.warp.reader.client.view.gwt.DefaultTextFactory;
 import de.trundicho.warp.reader.client.view.gwt.WarpReaderViewBuilderImpl;
 import de.trundicho.warp.reader.client.view.gwt.WebsiteParserAndWarperImpl;
-import de.trundicho.warp.reader.client.view.gwt.timer.WarpTimerFactoryImpl;
+import de.trundicho.warp.reader.client.view.gwt.timer.WarpTimerImpl;
 import de.trundicho.warp.reader.core.controller.WarpInitializer;
+import de.trundicho.warp.reader.core.controller.WarpUpdater;
 import de.trundicho.warp.reader.core.controller.play.PlayButtonListenerInitializer;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionPlayModelUpdater;
 import de.trundicho.warp.reader.core.controller.position.ReadingPositionUpdaterListener;
@@ -28,7 +29,7 @@ import de.trundicho.warp.reader.core.view.api.WarpReaderViewBuilder;
 import de.trundicho.warp.reader.core.view.api.WarpReaderViewModel;
 import de.trundicho.warp.reader.core.view.api.WebsiteParserAndWarper;
 import de.trundicho.warp.reader.core.view.api.parser.TextAreaParser;
-import de.trundicho.warp.reader.core.view.api.timer.WarpTimerFactory;
+import de.trundicho.warp.reader.core.view.api.timer.WarpTimer;
 import de.trundicho.warp.reader.core.view.api.widgets.*;
 
 /**
@@ -75,9 +76,9 @@ public class WarpReaderWeb implements EntryPoint {
         WarpTextWidget warpTextLabelUpdater = uiModel.getWarpTextLabelUpdater();
 
         NumberLabelWidget durationWidget = uiModel.getDurationLabel();
-        WarpTimerFactory warpTimerFactory = new WarpTimerFactoryImpl();
+        WarpTimer warpTimer = new WarpTimerImpl(new WarpUpdater(playModel));
         WarpInitializer warpTextAreaInitializer = new WarpInitializer(warpTextLabelUpdater, speedModel,
-                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimerFactory);
+                playModeModel, speedWeightModel, textSplitter, playModel, durationWidget, warpTimer);
 
         WebsiteParserAndWarper websiteParserAndWarper = new WebsiteParserAndWarperImpl(warpTextAreaInitializer, inputTextWidget);
         TextAreaParser textAreaParser = new TextAreaParser(warpTextAreaInitializer, websiteParserAndWarper);

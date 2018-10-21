@@ -9,9 +9,10 @@ import java.util.TimerTask;
 class WarpTimerForTest implements WarpTimer {
     private Timer timer;
     private final Runnable runnable;
+    private boolean cancelled = false;
 
     WarpTimerForTest(WarpUpdater warpUpdater) {
-        timer = new Timer("Timer");
+        timer = createTimer();
         runnable = new Runnable() {
 
             @Override
@@ -30,10 +31,15 @@ class WarpTimerForTest implements WarpTimer {
     @Override
     public void cancel() {
         timer.cancel();
+        cancelled = true;
     }
 
     @Override
     public void scheduleRepeating(int periodMillis) {
+        if(cancelled){
+            timer = createTimer();
+            cancelled = false;
+        }
         TimerTask timerTask = new TimerTask() {
             @Override
             public void run() {
@@ -41,5 +47,9 @@ class WarpTimerForTest implements WarpTimer {
             }
         };
         timer.schedule(timerTask, periodMillis);
+    }
+
+    private Timer createTimer() {
+        return new Timer("Timer");
     }
 }
