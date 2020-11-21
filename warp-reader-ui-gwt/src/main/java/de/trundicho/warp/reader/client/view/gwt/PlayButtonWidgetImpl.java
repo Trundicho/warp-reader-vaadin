@@ -1,9 +1,6 @@
 package de.trundicho.warp.reader.client.view.gwt;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
-import de.trundicho.warp.reader.core.controller.play.PlayButtonWidgetActionRunner;
 import de.trundicho.warp.reader.core.model.playmode.PlayState;
 import de.trundicho.warp.reader.core.view.api.widgets.PlayButtonWidget;
 
@@ -26,14 +23,8 @@ final class PlayButtonWidgetImpl implements PlayButtonWidget {
 	}
 
 	@Override
-	public void registerChangeListenerAction(PlayButtonWidgetActionRunner action) {
-		playButton.addClickHandler(new ClickHandler() {
-
-			@Override
-			public void onClick(ClickEvent event) {
-				action.run();
-			}
-		});
+	public void registerChangeListenerAction(Runnable action) {
+		playButton.addClickHandler(event -> action.run());
 	}
 
 }

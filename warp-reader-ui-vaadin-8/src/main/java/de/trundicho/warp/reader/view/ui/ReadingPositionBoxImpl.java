@@ -24,12 +24,7 @@ class ReadingPositionBoxImpl implements ReadingPositionBox {
 
     @Override
     public void registerChangeListenerAction(ReadingPositionPlayModelUpdater action) {
-        readPositionBox.addValueChangeListener(new HasValue.ValueChangeListener<Double>() {
-            @Override
-            public void valueChange(HasValue.ValueChangeEvent<Double> valueChangeEvent) {
-                action.run();
-            }
-        });
+        readPositionBox.addValueChangeListener((HasValue.ValueChangeListener<Double>) valueChangeEvent -> action.run());
     }
 
 }
