@@ -1,6 +1,8 @@
 # Warp Reader
 
-Warp Reader is a rapid serial visual presentation reader [RSVP](https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation) for fast reading (spritz like). This repository has the Warp-Reader-Core and multiple ui implementations.
+Warp Reader is a rapid serial visual presentation reader [RSVP](https://en.wikipedia.org/wiki/Rapid_serial_visual_presentation) for fast reading (spritz like). 
+
+This repository has the Warp-Reader-Vaadin implementation.
 
 ## Demo
 
